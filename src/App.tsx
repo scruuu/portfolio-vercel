@@ -6,6 +6,7 @@ import Work from './components/sections/Work';
 import Projects from './components/sections/Projects';
 import About from './components/sections/About';
 import Contact from './components/sections/Contact';
+import Section from './components/Section';
 
 // Add Inter font (similar to Proxima Nova)
 import '@fontsource/inter/300.css'; // light
@@ -18,10 +19,18 @@ const App: React.FC = () => {
     <div className="relative w-screen min-h-screen font-['Inter']">
       <Navigation />
       <Hero />
-      <Work />
-      <Projects />
-      <About />
-      <Contact />
+      <Section>
+        <Work />
+      </Section>
+      <Section>
+        <Projects />
+      </Section>
+      <Section>
+        <About />
+      </Section>
+      <Section>
+        <Contact />
+      </Section>
     </div>
   );
 };
