@@ -7,7 +7,6 @@ import { SimpleCard } from './components/SimpleCard';
 import projectsData from './data/projects.json';
 import { useForm, ValidationError } from '@formspree/react';
 // Import assets so Vite processes and hashes them
-import backgroundVideo from '/background.mp4';
 import msLogo from './assets/ms.jpg';
 import meImg from './assets/me.png';
 import project1 from './assets/projects/project-1.jpeg';
@@ -74,7 +73,7 @@ const App: React.FC = () => {
           muted
           className="absolute top-0 left-0 w-full h-full object-cover"
         >
-          <source src={backgroundVideo} type="video/mp4" />
+          <source src="https://res.cloudinary.com/dd6ynbqu6/video/upload/v1764854641/7513671-uhd_2560_1440_24fps_azq466.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
