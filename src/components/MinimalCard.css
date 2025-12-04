@@ -1,0 +1,59 @@
+.minimal-card {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.minimal-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.minimal-card-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #212529;
+}
+
+.minimal-card-description {
+  font-size: 14px;
+  color: #495057;
+  margin-bottom: 16px;
+  flex-grow: 1;
+}
+
+.minimal-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.minimal-card-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.minimal-card-tech-item {
+  background-color: #e9ecef;
+  color: #495057;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.minimal-card-link {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.minimal-card-link:hover {
+  text-decoration: none;
+}
