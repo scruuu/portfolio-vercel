@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface SimpleCardProps {
@@ -64,7 +65,7 @@ export const SimpleCard: React.FC<SimpleCardProps> = ({ children, backContent, c
   return (
     <div
       className={`relative w-full cursor-pointer ${className}`}
-      onClick={toggle}
+      onClick={() => { if (!isExpanded) toggle(); }}
       onKeyDown={onKeyDown}
       role="button"
       tabIndex={0}
@@ -97,60 +98,65 @@ export const SimpleCard: React.FC<SimpleCardProps> = ({ children, backContent, c
         )}
       </AnimatePresence>
 
-      {/* Overlay popout rendering outside the flow */}
-      <AnimatePresence>
-        {isExpanded && overlay && (
-          <>
-            <motion.div
-              key="backdrop"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.18 }}
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsExpanded(false);
-              }}
-              className="fixed inset-0 bg-black/60 z-40"
-            />
-
-            <motion.div
-              key="overlay"
-              initial={isMobile ? { y: 40, opacity: 0 } : { opacity: 0, scale: 0.98 }}
-              animate={isMobile ? { y: 0, opacity: 1 } : { opacity: 1, scale: 1 }}
-              exit={isMobile ? { y: 40, opacity: 0 } : { opacity: 0, scale: 0.98 }}
-              transition={{ duration: 0.26, ease: [0.03, 0.95, 0.1, 0.95] }}
-              className={isMobile ? 'fixed inset-0 z-50 flex items-end justify-center p-4 pointer-events-none' : 'fixed inset-0 z-50 flex items-center justify-center p-6 pointer-events-none'}
-            >
+      {/* Overlay popout rendering outside the flow (portal) */}
+      {typeof document !== 'undefined' && ReactDOM.createPortal(
+        <AnimatePresence>
+          {isExpanded && overlay && (
+            <>
               <motion.div
-                layoutId={layoutId}
-                role="dialog"
-                aria-modal="true"
-                onClick={(e) => e.stopPropagation()}
-                className={isMobile ? 'pointer-events-auto w-full bg-[#0f0f0f] rounded-t-lg shadow-xl overflow-auto' : 'pointer-events-auto w-full max-w-3xl bg-[#0f0f0f] rounded-md shadow-xl overflow-auto'}
-                style={isMobile ? { maxHeight: '92vh' } : { maxHeight: '90vh' }}
-              >
-                <div className="flex justify-end p-3">
-                  <button
-                    ref={closeButtonRef}
-                    onClick={() => setIsExpanded(false)}
-                    className="text-gray-300 hover:text-white focus:outline-none"
-                    aria-label="Close details"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  </button>
-                </div>
+                key="backdrop"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.22, ease: [0.06, 0.01, 0.1, 0.99] }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsExpanded(false);
+                }}
+                className="fixed inset-0 bg-black/55 z-40"
+                style={{ backdropFilter: 'blur(6px)' }}
+              />
 
-                <div className="p-6 bg-gradient-to-r from-[rgba(17,17,17,0.95)] to-[rgba(17,17,17,0.98)] text-white">
-                  {backContent}
-                </div>
+              <motion.div
+                key="overlay"
+                initial={isMobile ? { y: 40, opacity: 0 } : { opacity: 0, scale: 0.992 }}
+                animate={isMobile ? { y: 0, opacity: 1 } : { opacity: 1, scale: 1 }}
+                exit={isMobile ? { y: 40, opacity: 0 } : { opacity: 0, scale: 0.992 }}
+                transition={{ duration: 0.34, ease: [0.04, 0.2, 0.08, 0.99], layout: { type: 'spring', stiffness: 120, damping: 20, mass: 0.9 } as any }}
+                className={isMobile ? 'fixed inset-0 z-50 flex items-end justify-center p-4 pointer-events-none' : 'fixed inset-0 z-50 flex items-center justify-center p-6 pointer-events-none'}
+              >
+                <motion.div
+                  layoutId={layoutId}
+                  role="dialog"
+                  aria-modal="true"
+                  onClick={(e) => e.stopPropagation()}
+                  className={isMobile ? 'pointer-events-auto w-full bg-[#0f0f0f] rounded-t-lg shadow-2xl ring-1 ring-white/5 overflow-auto' : 'pointer-events-auto w-full max-w-3xl bg-[#0f0f0f] rounded-md shadow-2xl ring-1 ring-white/5 overflow-auto transform-gpu will-change-transform'}
+                  style={isMobile ? { maxHeight: '92vh' } : { maxHeight: '90vh' }}
+                  transition={{ layout: { type: 'spring', stiffness: 120, damping: 20, mass: 0.9 } as any }}
+                >
+                  <div className="flex justify-end p-3">
+                    <button
+                      ref={closeButtonRef}
+                      onClick={() => setIsExpanded(false)}
+                      className="text-gray-300 hover:text-white focus:outline-none"
+                      aria-label="Close details"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+                  </div>
+
+                  <div className="p-6 bg-gradient-to-r from-[rgba(17,17,17,0.95)] to-[rgba(17,17,17,0.98)] text-white">
+                    {backContent}
+                  </div>
+                </motion.div>
               </motion.div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+            </>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </div>
   );
 };

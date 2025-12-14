@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, LayoutGroup } from 'framer-motion';
 import { SimpleCard } from '../SimpleCard';
 import projectsData from '../../data/projects.json';
 import project1 from '../../assets/projects/project-1.jpeg';
@@ -45,6 +45,7 @@ const Projects: React.FC = () => {
         </div>
         
         {/* Project Cards Grid */}
+        <LayoutGroup>
         <motion.div
           className="grid grid-cols-1 md:grid-cols-3 gap-4 px-4 md:px-8 lg:px-12"
           variants={containerVariants}
@@ -91,9 +92,10 @@ const Projects: React.FC = () => {
                         <div className="text-sm text-gray-300 font-['Inter']">
                           <p>{project.description}</p>
                         </div>
-                      )}
-                    </div>
-
+                      ))}
+                    </motion.div>
+                    </LayoutGroup>
+                  </motion.div>
                     <div className="flex justify-between items-center mt-4 pt-4 border-t border-gray-700">
                       <span className="text-sm text-gray-400 font-['Inter']">{project.date}</span>
                       {project.url && project.url !== '404' ? (
