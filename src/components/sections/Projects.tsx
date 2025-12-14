@@ -13,9 +13,7 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
+    transition: { staggerChildren: 0.2 },
   },
 };
 
@@ -24,28 +22,30 @@ const itemVariants = {
   visible: {
     y: 0,
     opacity: 1,
-    transition: {
-      duration: 0.5,
-    },
+    transition: { duration: 0.5 },
   },
 };
 
 const Projects: React.FC = () => {
-    return (
-        <div id="projects" className="bg-black text-white py-16">
-        <div className="max-w-5xl mx-auto px-8 md:px-16 lg:px-24">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-12">
-            <div className="md:col-span-1">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-left text-white font-['Inter'] uppercase">PROJECTS</h2>
-            </div>
-            <div className="md:col-span-1 flex items-center">
-              <p className="text-lg text-gray-300 font-['Inter']">A showcase of my personal projects and technical experiments, demonstrating my passion for innovation and problem-solving.</p>
-            </div>
+  return (
+    <div id="projects" className="bg-black text-white py-16">
+      <div className="max-w-5xl mx-auto px-8 md:px-16 lg:px-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-12">
+          <div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 font-['Inter'] uppercase">
+              PROJECTS
+            </h2>
+          </div>
+          <div>
+            <p className="text-lg text-gray-300 font-['Inter']">
+              A showcase of my personal projects and technical experiments,
+              demonstrating my passion for innovation and problem-solving.
+            </p>
           </div>
         </div>
-        
-        {/* Project Cards Grid */}
-        <LayoutGroup>
+      </div>
+
+      <LayoutGroup>
         <motion.div
           className="grid grid-cols-1 md:grid-cols-3 gap-4 px-4 md:px-8 lg:px-12"
           variants={containerVariants}
@@ -55,58 +55,68 @@ const Projects: React.FC = () => {
         >
           {projectsData.map((project, index) => (
             <motion.div key={index} variants={itemVariants}>
-              <SimpleCard 
+              <SimpleCard
                 className="w-full"
-                overlay={true}
+                overlay
                 layoutId={`project-${index}`}
                 backContent={
                   <div className="relative p-6 flex flex-col min-h-[14rem]">
                     <div className="flex-1">
-                      <h3 className="text-2xl font-bold text-white font-['Inter'] uppercase mb-4">{project.title}</h3>
+                      <h3 className="text-2xl font-bold uppercase mb-4">
+                        {project.title}
+                      </h3>
 
-                      {/* Problem / Solution / Impact sections with sensible fallbacks */}
-                      {((project.problem && project.problem.trim()) || (project.solution && project.solution.trim()) || (project.impact && project.impact.trim())) ? (
-                        <div className="space-y-4 text-sm text-gray-300 font-['Inter']">
-                          {project.problem && project.problem.trim() ? (
+                      {(project.problem?.trim() ||
+                        project.solution?.trim() ||
+                        project.impact?.trim()) ? (
+                        <div className="space-y-4 text-sm text-gray-300">
+                          {project.problem?.trim() && (
                             <div>
-                              <h4 className="text-xs uppercase tracking-wide text-gray-400 mb-1">Problem</h4>
-                              <p className="text-gray-300">{project.problem}</p>
+                              <h4 className="text-xs uppercase text-gray-400 mb-1">
+                                Problem
+                              </h4>
+                              <p>{project.problem}</p>
                             </div>
-                          ) : null}
+                          )}
 
-                          {project.solution && project.solution.trim() ? (
+                          {project.solution?.trim() && (
                             <div>
-                              <h4 className="text-xs uppercase tracking-wide text-gray-400 mb-1">Solution</h4>
-                              <p className="text-gray-300">{project.solution}</p>
+                              <h4 className="text-xs uppercase text-gray-400 mb-1">
+                                Solution
+                              </h4>
+                              <p>{project.solution}</p>
                             </div>
-                          ) : null}
+                          )}
 
-                          {project.impact && project.impact.trim() ? (
+                          {project.impact?.trim() && (
                             <div>
-                              <h4 className="text-xs uppercase tracking-wide text-gray-400 mb-1">Impact</h4>
-                              <p className="text-gray-300">{project.impact}</p>
+                              <h4 className="text-xs uppercase text-gray-400 mb-1">
+                                Impact
+                              </h4>
+                              <p>{project.impact}</p>
                             </div>
-                          ) : null}
+                          )}
                         </div>
                       ) : (
-                        <div className="text-sm text-gray-300 font-['Inter']">
-                          <p>{project.description}</p>
-                        </div>
-                      ))}
-                    </motion.div>
-                    </LayoutGroup>
-                  </motion.div>
+                        <p className="text-sm text-gray-300">
+                          {project.description}
+                        </p>
+                      )}
+                    </div>
+
                     <div className="flex justify-between items-center mt-4 pt-4 border-t border-gray-700">
-                      <span className="text-sm text-gray-400 font-['Inter']">{project.date}</span>
+                      <span className="text-sm text-gray-400">
+                        {project.date}
+                      </span>
                       {project.url && project.url !== '404' ? (
                         <a
                           href={project.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-white hover:text-gray-300 transition-all transform hover:-translate-y-1 hover:translate-x-1 group"
+                          className="hover:text-gray-300 transition-transform hover:-translate-y-1 hover:translate-x-1"
                         >
                           <svg
-                            className="w-8 h-8 transform -rotate-45"
+                            className="w-8 h-8 -rotate-45"
                             fill="none"
                             stroke="currentColor"
                             strokeWidth={2.5}
@@ -120,14 +130,16 @@ const Projects: React.FC = () => {
                           </svg>
                         </a>
                       ) : (
-                        <span className="text-sm text-gray-500">No link available</span>
+                        <span className="text-sm text-gray-500">
+                          No link available
+                        </span>
                       )}
                     </div>
                   </div>
                 }
               >
                 <div className="relative h-80">
-                  <img 
+                  <img
                     src={
                       index === 0 ? project1 :
                       index === 1 ? project2 :
@@ -139,20 +151,25 @@ const Projects: React.FC = () => {
                     alt={project.title}
                     className="w-full h-full object-cover"
                     onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = `https://source.unsplash.com/random/800x600/?${project.category.toLowerCase().replace(/\s+/g, '-')}`;
+                      const img = e.target as HTMLImageElement;
+                      img.src = `https://source.unsplash.com/random/800x600/?${project.category
+                        .toLowerCase()
+                        .replace(/\s+/g, '-')}`;
                     }}
                   />
-                  <div className="absolute bottom-4 left-4 card-title z-20 max-w-[70%]">
-                    <h3 className="text-2xl font-bold text-white mb-2 font-['Inter'] uppercase line-clamp-2">{project.title}</h3>
+                  <div className="absolute bottom-4 left-4 z-20 max-w-[70%]">
+                    <h3 className="text-2xl font-bold uppercase line-clamp-2">
+                      {project.title}
+                    </h3>
                   </div>
                 </div>
               </SimpleCard>
             </motion.div>
           ))}
         </motion.div>
-      </div>
-    )
+      </LayoutGroup>
+    </div>
+  );
 };
 
 export default Projects;
