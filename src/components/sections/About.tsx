@@ -25,7 +25,7 @@ const About: React.FC = () => {
             <div>
               <h3 className="text-2xl font-bold mb-4 text-gray-900 font-['Inter']">WHO AM I?</h3>
               <p className="text-lg text-gray-700 font-['Inter'] leading-relaxed">
-                A dedicated software professional with a strong interest in backend development and system integration. Skilled in Java, Spring Boot, and database technologies, with a solid foundation in computer science fundamentals.
+                A dedicated software professional with a strong interest in backend development, system integration, and applied AI — including Generative AI (GenAI). Skilled in Java, Spring Boot, Python, and database technologies, with a solid foundation in computer science and deep learning.
               </p>
             </div>
             <div>
@@ -37,7 +37,7 @@ const About: React.FC = () => {
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-blue-600 mt-1">•</span>
-                  <p className="text-gray-700 font-['Inter']">Computer Science graduate from Graphic Era University specializing in Artifical Intelligence & Machine Learning</p>
+                  <p className="text-gray-700 font-['Inter']">Computer Science graduate from Graphic Era University specializing in Artificial Intelligence & Machine Learning</p>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-blue-600 mt-1">•</span>
@@ -52,7 +52,7 @@ const About: React.FC = () => {
             <div>
               <h3 className="text-2xl font-bold mb-4 text-gray-900 font-['Inter']">SKILLS</h3>
               <div className="flex flex-wrap gap-2">
-                {['Java', 'Spring', 'Spring Boot', 'Spring Batch', 'Python', 'ML', 'DL', 'Tensorflow', 'SQL', 'React', 'TypeScript', 'Git'].map((skill) => (
+                {['Java', 'Spring', 'Spring Boot', 'Spring Batch', 'Python', 'ML', 'DL', 'Tensorflow', 'Generative AI', 'AI', 'SQL', 'React', 'TypeScript', 'Git'].map((skill) => (
                   <span key={skill} className="px-4 py-2 bg-gray-100 text-gray-800 rounded-full font-['Inter']">
                     {skill}
                   </span>

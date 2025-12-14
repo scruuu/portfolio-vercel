@@ -27,13 +27,13 @@ const Work: React.FC = () => {
           <h3 className="text-3xl font-bold text-gray-900 mb-2 uppercase">MORGAN STANLEY</h3>
           <p className="text-xl text-gray-700 mb-4 uppercase">TECHNOLOGY ANALYST | August 2025 - Present</p>
           <div className="space-y-2 text-gray-600">
-            <p>• Enhancing a financial transaction processing system to support global operations.</p>
-            <p>• Implementing multi-currency features and improving system scalability.</p>
-            <p>• Developing automated file processing pipelines with Spring Boot & Batch.</p>
-            <p>• Collaborating with teams to deliver secure, reliable, and high-performance solutions.</p>
+            <p>• Backend development on Java-based microservices, focusing on reliability and scalability.</p>
+            <p>• Designed and developed agentic AI solutions to automate decision workflows.</p>
+            <p>• Built reporting dashboards and visualizations using Apache Superset.</p>
+            <p>• Supported modernization initiatives and core banking technology.</p>
           </div>
           <div className="mt-4">
-            <p className="text-sm text-gray-500">Technologies: Java, Spring, Spring Boot</p>
+            <p className="text-sm text-gray-500">Technologies: Java, Spring, Spring Boot, Python, Apache Superset, AI</p>
           </div>
 
           <hr className="my-8 border-gray-300" />
