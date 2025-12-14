@@ -3,42 +3,60 @@
     "title": "HOTEL BOOKING APPLICATION",
     "category": "Full Stack MERN App",
     "date": "Apr 2024 – May 2024",
-  "description": "Built a full-stack hotel booking app (TypeScript, Node, Express, MongoDB, Tailwind). Features: auth, hotel management, image uploads, search, and payments.",
-    "url": "https://github.com/scruuu/mern-booking-app"
+    "description": "Built a full-stack hotel booking app (TypeScript, Node, Express, MongoDB, Tailwind). Features: auth, hotel management, image uploads, search, and payments.",
+    "url": "https://github.com/scruuu/mern-booking-app",
+    "problem": "Independent hotels lack the resources to build and maintain a comprehensive online booking system, making it difficult to compete with larger chains.",
+    "solution": "Developed a full-stack MERN application providing hotels with a dashboard to manage bookings, room inventory, and pricing. The customer-facing side features secure payments, advanced search filters, and an intuitive booking process.",
+    "impact": "The platform empowers small hotel owners to increase their online visibility, streamline operations, and boost direct bookings, reducing reliance on third-party booking sites and their high commission fees."
   },
   {
     "title": "QUANTUM MACHINE LEARNING",
     "category": "Quantum Computing",
     "date": "Dec 2023 – Jan 2024",
-  "description": "Hybrid quantum/classical ML experiment using Qiskit and PCA to compare performance with classical baselines.",
-    "url": "404"
+    "description": "Hybrid quantum/classical ML experiment using Qiskit and PCA to compare performance with classical baselines.",
+    "url": "404",
+    "problem": "Classical ML sometimes struggles with certain small-data, high-dimensional tasks where quantum feature spaces may offer advantages.",
+    "solution": "Built a hybrid pipeline (Qiskit + classical preprocessing) using PCA and parameterized quantum circuits to evaluate model performance against classical baselines.",
+    "impact": "Provided empirical benchmarks and insights on where quantum embeddings could be beneficial; clarified next steps for larger-scale experiments."
   },
   {
     "title": "SURVEILLANCE VIDEO ANOMALY DETECTION",
     "category": "Deep Learning",
     "date": "Jul 2023 – Sep 2023",
-  "description": "Built a surveillance video anomaly detection pipeline (TensorFlow, OpenCV) with a CNN detecting multiple anomaly types and optimized frame extraction for performance.",
-    "url": "404"
+    "description": "Built a surveillance video anomaly detection pipeline (TensorFlow, OpenCV) with a CNN detecting multiple anomaly types and optimized frame extraction for performance.",
+    "url": "404",
+    "problem": "Detecting rare anomalous events in long video streams with limited compute and high false-positive rates.",
+    "solution": "Engineered an efficient frame-extraction pipeline + lightweight CNN classifier, plus post-processing to reduce spurious alerts.",
+    "impact": "Lowered false positives and improved processing throughput, enabling near-real-time anomaly signalling on edge hardware."
   },
   {
     "title": "DISEASE PREDICTION SYSTEM",
     "category": "Machine Learning",
     "date": "Dec 2022 – Jan 2023",
-  "description": "Disease prediction tool using Multinomial Naive Bayes (scikit-learn) with a simple Tkinter GUI.",
-    "url": "https://github.com/scruuu/disease-prediction-system"
+    "description": "Disease prediction tool using Multinomial Naive Bayes (scikit-learn) with a simple Tkinter GUI.",
+    "url": "https://github.com/scruuu/disease-prediction-system",
+    "problem": "Clinicians and students need quick, interpretable prototypes to explore symptom-to-diagnosis models without heavy tooling.",
+    "solution": "Built a lightweight Multinomial Naive Bayes model with a simple Tkinter UI for input and immediate predictions; focused on interpretability.",
+    "impact": "Serves as a teaching/prototyping tool that demonstrates model behavior and helps prioritize data collection for production-ready systems."
   },
   {
     "title": "FOOD ORDERING APPLICATION",
     "category": "Full Stack App",
     "date": "Jan 2022 – Mar 2022",
-  "description": "Full-stack food ordering app with a restaurant dashboard and customer-facing ordering UI.",
-    "url": "https://github.com/scruuu/mern-food-ordering-app-backend"
+    "description": "Full-stack food ordering app with a restaurant dashboard and customer-facing ordering UI.",
+    "url": "https://github.com/scruuu/mern-food-ordering-app-backend",
+    "problem": "Small restaurants need affordable online ordering and simple order management without complex integrations.",
+    "solution": "Implemented a MERN stack app with a restaurant dashboard, menu management, and customer ordering flow.",
+    "impact": "Reduced order friction in demos and prototypes; provided a foundation for production-ready features like payments and analytics."
   },
   {
     "title": "CRYPTO CURRENCY CLASSIFIER",
     "category": "Machine Learning",
     "date": "Oct 2021 – Dec 2021",
-  "description": "ML classifier trained to categorize cryptocurrencies from feature data.",
-    "url": "https://github.com/scruuu/crypto-address-classification"
+    "description": "ML classifier trained to categorize cryptocurrencies from feature data.",
+    "url": "https://github.com/scruuu/crypto-address-classification",
+    "problem": "Automatically labeling and categorizing cryptocurrency addresses from noisy feature sets is challenging at scale.",
+    "solution": "Trained classifiers on engineered features to reliably categorize addresses and evaluate performance across classes.",
+    "impact": "Improved automated labeling accuracy and provided a reproducible pipeline for further feature engineering and model iteration."
   }
 ]

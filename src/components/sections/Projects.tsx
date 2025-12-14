@@ -55,17 +55,45 @@ const Projects: React.FC = () => {
           {projectsData.map((project, index) => (
             <motion.div key={index} variants={itemVariants}>
               <SimpleCard 
-                className="h-80 w-full"
+                className="w-full"
+                overlay={true}
+                layoutId={`project-${index}`}
                 backContent={
-                  <div className="relative h-full p-6 flex flex-col">
+                  <div className="relative p-6 flex flex-col min-h-[14rem]">
                     <div className="flex-1">
                       <h3 className="text-2xl font-bold text-white font-['Inter'] uppercase mb-4">{project.title}</h3>
-                      <div className="space-y-2">
-                        {project.description.split('. ').map((bullet, i) => (
-                          <p key={i} className="text-gray-300 font-['Inter'] text-sm">• {bullet}</p>
-                        ))}
-                      </div>
+
+                      {/* Problem / Solution / Impact sections with sensible fallbacks */}
+                      {((project.problem && project.problem.trim()) || (project.solution && project.solution.trim()) || (project.impact && project.impact.trim())) ? (
+                        <div className="space-y-4 text-sm text-gray-300 font-['Inter']">
+                          {project.problem && project.problem.trim() ? (
+                            <div>
+                              <h4 className="text-xs uppercase tracking-wide text-gray-400 mb-1">Problem</h4>
+                              <p className="text-gray-300">{project.problem}</p>
+                            </div>
+                          ) : null}
+
+                          {project.solution && project.solution.trim() ? (
+                            <div>
+                              <h4 className="text-xs uppercase tracking-wide text-gray-400 mb-1">Solution</h4>
+                              <p className="text-gray-300">{project.solution}</p>
+                            </div>
+                          ) : null}
+
+                          {project.impact && project.impact.trim() ? (
+                            <div>
+                              <h4 className="text-xs uppercase tracking-wide text-gray-400 mb-1">Impact</h4>
+                              <p className="text-gray-300">{project.impact}</p>
+                            </div>
+                          ) : null}
+                        </div>
+                      ) : (
+                        <div className="text-sm text-gray-300 font-['Inter']">
+                          <p>{project.description}</p>
+                        </div>
+                      )}
                     </div>
+
                     <div className="flex justify-between items-center mt-4 pt-4 border-t border-gray-700">
                       <span className="text-sm text-gray-400 font-['Inter']">{project.date}</span>
                       {project.url && project.url !== '404' ? (
@@ -96,7 +124,7 @@ const Projects: React.FC = () => {
                   </div>
                 }
               >
-                <div className="relative h-full">
+                <div className="relative h-80">
                   <img 
                     src={
                       index === 0 ? project1 :
@@ -113,8 +141,8 @@ const Projects: React.FC = () => {
                       target.src = `https://source.unsplash.com/random/800x600/?${project.category.toLowerCase().replace(/\s+/g, '-')}`;
                     }}
                   />
-                  <div className="absolute bottom-4 left-4 card-title z-20">
-                    <h3 className="text-2xl font-bold text-white mb-2 font-['Inter'] uppercase">{project.title}</h3>
+                  <div className="absolute bottom-4 left-4 card-title z-20 max-w-[70%]">
+                    <h3 className="text-2xl font-bold text-white mb-2 font-['Inter'] uppercase line-clamp-2">{project.title}</h3>
                   </div>
                 </div>
               </SimpleCard>
